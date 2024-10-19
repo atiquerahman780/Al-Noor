@@ -1,0 +1,98 @@
+.Product_Image{
+    width: 250px;
+    
+}
+.Product_Cart{
+    margin: 20px;
+    width: 250px;
+    background-color: #fff;
+    border: solid white;
+    border-radius: 10px;
+
+}
+.P_title{
+    margin: 0%;
+    padding-left:  10px;
+    padding-top: 10px;
+    display: inline;
+}
+.P_price{
+    margin: 0%;
+    padding-left:  10px;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    vertical-align: middle;
+    
+}
+
+.P_gram{
+    float: right;
+    font-size: 12px;
+    font-weight: bold;
+    vertical-align: middle;
+    margin: 5px;
+    padding: 5px;
+    border-radius: 20px;
+    background-color: aqua;
+}
+.product_description{
+    padding: 10px;
+    margin: 0%;
+}
+.Card_Display{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+
+.Cart_button{
+    width: 125px;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    color: white;
+    background-color: #333;
+}
+.Buy_now_button{
+    width: 250px;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    color: white;
+    background-color: #333;
+}
+.buttons{
+    display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.plus_minus{
+    margin: auto;
+
+    display: table;
+     border: solid #333;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    background-color: aqua; 
+   
+}
+.vl{
+    border-left: 1px solid #333;
+    height: 30px;
+    margin: 5px;
+}
+.plus{
+    
+    border: none;
+    background: none;
+    
+}
+.minus{
+    border: none;
+    background: none;
+       
+}
+.heading_margin_remove{
+    margin: 0%;
+}

@@ -1,0 +1,63 @@
+
+.Circle_Area{
+  width: 50px;
+  height: 50px;
+  
+  
+}
+.logo_img{
+  width: 50px;
+}
+
+
+body {
+  background-color: #f9f9f9;
+  margin: 0%;
+}
+
+.wrapper {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  background-color: #333;
+}
+.one {
+  grid-column: 1;
+  grid-row: 1/3;
+  color: white;
+  text-align: start;
+  padding: 10px;
+  background-color: #333;
+}
+.two {
+  grid-column: 2;
+  grid-row: 1 / 3;
+  color: white;
+  font-size: 2rem;
+  background-color: #333;
+  text-align: center;
+  padding: 10px;
+}
+.three {
+  grid-column: 3;
+  grid-row: 1 / 3;
+  color: white;
+  background-color: #333;
+  text-align: end;
+  padding: 20px;
+}
+.cardimg {
+  width: 30px;
+}
+@media (max-width: 722px) {
+  .two {
+    font-size: 1rem;
+  }
+  
+}
+@media (max-width: 832px) {
+  .two {
+    font-size: 1rem;
+  }
+  
+}
