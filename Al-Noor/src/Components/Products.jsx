@@ -10,7 +10,7 @@ function Products() {
 
   useEffect(() => {
     // Fetch data from the backend
-    fetch("http://posti.shop/getData") // Assuming the backend runs on port 5000
+    fetch("http://posti.shop:5000/getData") // Assuming the backend runs on port 5000
       .then((response) => response.json()) // Parse the JSON data from the response
       .then((dataArray) => {
         console.log("Fetched Data:", dataArray); // Log the data to see what we get
