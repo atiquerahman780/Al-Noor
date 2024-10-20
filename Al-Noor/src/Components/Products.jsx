@@ -69,8 +69,10 @@ function Products() {
                       quantity: quantite,
                     };
                     setsavedProducts([...savedProducts, newProduct]);
+                    alert("Product Added to Cart.");
                     
                   } else {
+                    alert("Product already exists in Cart.");
                     console.log(
                       "Product with this ID already exists in localStorage."
                     );

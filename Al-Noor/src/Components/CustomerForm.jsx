@@ -53,7 +53,7 @@ const handleSubmit = (e) => {
   
       // Send order data to the backend using Axios
       axios
-        .post("http://localhost:5000/submitOrder", orderData)
+        .post("https://posti.shop/submitOrder", orderData)
         .then((response) => {
           console.log("Order submitted:", response.data);
           alert("Order submitted successfully");
