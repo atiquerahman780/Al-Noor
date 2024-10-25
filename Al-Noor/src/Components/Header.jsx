@@ -16,7 +16,7 @@ function Header() {
         <span>Al-Noor Desi Ghee</span>
       </div>
       <div className="three">
-      <Link to="http://posti.shop/contacts">
+      <Link to="../contacts">
         <img className="cardimg" src={cart_image} alt="cart Image"  />
         </Link>
       </div>

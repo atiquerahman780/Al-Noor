@@ -14,7 +14,7 @@ function App(){
     
     return(
         <>
-        <Outlet/>
+        {/* <Outlet/> */}
         <Header/>
         <Products/>
         <Footer/>
