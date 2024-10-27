@@ -5,7 +5,6 @@ import CryptoJS from 'crypto-js';
 
 function Payment_Method() {
   const [HS_RequestHash, setHS_RequestHash] = useState("");
-  const [RequestHash, setRequestHash] = useState("");
   const [Auth_token, setAuth_token] = useState("");
   const [HS_StoreId, setHS_StoreId] = useState("");
   const [HS_MerchantHash, setHS_MerchantHash] = useState("");
@@ -40,45 +39,45 @@ function Payment_Method() {
       if (document.getElementById("HS_IsRedirectionRequest").value === "1") {
         document.getElementById("HandshakeForm").submit();
       }
-      // else {
-      //   const myData = {
-      //     HS_MerchantId: document.getElementById("HS_MerchantId").value,
-      //     HS_StoreId: document.getElementById("HS_StoreId").value,
-      //     HS_MerchantHash: document.getElementById("HS_MerchantHash").value,
-      //     HS_MerchantUsername: document.getElementById("HS_MerchantUsername").value,
-      //     HS_MerchantPassword: document.getElementById("HS_MerchantPassword").value,
-      //     HS_IsRedirectionRequest: document.getElementById("HS_IsRedirectionRequest").value,
-      //     HS_ReturnURL: document.getElementById("HS_ReturnURL").value,
-      //     HS_RequestHash: document.getElementById("HS_RequestHash").value,
-      //     HS_ChannelId: document.getElementById("HS_ChannelId").value,
-      //     HS_TransactionReferenceNumber: document.getElementById("HS_TransactionReferenceNumber").value,
-      //   };
+      else {
+        const myData = {
+          HS_MerchantId: document.getElementById("HS_MerchantId").value,
+          HS_StoreId: document.getElementById("HS_StoreId").value,
+          HS_MerchantHash: document.getElementById("HS_MerchantHash").value,
+          HS_MerchantUsername: document.getElementById("HS_MerchantUsername").value,
+          HS_MerchantPassword: document.getElementById("HS_MerchantPassword").value,
+          HS_IsRedirectionRequest: document.getElementById("HS_IsRedirectionRequest").value,
+          HS_ReturnURL: document.getElementById("HS_ReturnURL").value,
+          HS_RequestHash: document.getElementById("HS_RequestHash").value,
+          HS_ChannelId: document.getElementById("HS_ChannelId").value,
+          HS_TransactionReferenceNumber: document.getElementById("HS_TransactionReferenceNumber").value,
+        };
 
-      //   fetch("https://sandbox.bankalfalah.com/HS/HS/HS", {
-      //     method: "POST",
-      //     headers: {
-      //       "Content-Type": "application/x-www-form-urlencoded",
-      //     },
-      //     body: new URLSearchParams(myData).toString(),
-      //   })
-      //     .then((response) => response.json())
-      //     .then((data) => {
-      //       if (data && data.success === "true") {
-      //         document.getElementById("AuthToken").value = data.AuthToken;
-      //         document.getElementById("ReturnURL").value = data.ReturnURL;
-      //         alert("Success: Handshake Successful");
-      //       } else {
-      //         alert("Error: Handshake Unsuccessful");
-      //       }
-      //     })
-      //     .catch((error) => {
-      //       alert("Error: An error occurred");
-      //       console.error(error);
-      //     })
-      //     .finally(() => {
-      //       handshakeButton.removeAttribute("disabled");
-      //     });
-      // }
+        fetch("https://sandbox.bankalfalah.com/HS/HS/HS", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/x-www-form-urlencoded",
+          },
+          body: new URLSearchParams(myData).toString(),
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            if (data && data.success === "true") {
+              document.getElementById("AuthToken").value = data.AuthToken;
+              document.getElementById("ReturnURL").value = data.ReturnURL;
+              alert("Success: Handshake Successful");
+            } else {
+              alert("Error: Handshake Unsuccessful");
+            }
+          })
+          .catch((error) => {
+            alert("Error: An error occurred");
+            console.error(error);
+          })
+          .finally(() => {
+            handshakeButton.removeAttribute("disabled");
+          });
+      }
     };
 
     handshakeButton.addEventListener("click", handleHandshakeClick);
@@ -115,7 +114,7 @@ function Payment_Method() {
     );
 
     document.getElementById("HS_RequestHash").value = encrypted.toString();
-    document.getElementById("RequestHash").value = encrypted.toString();
+    
     
     console.log(encrypted.toString())
   };
@@ -241,7 +240,7 @@ function Payment_Method() {
         onChange={(e) => {
           setAuth_token(e.target.value)
           console.log(e.target.value)}} />
-        <input id="RequestHash" name="RequestHash" value="hAYl0F2Gkz8lRFyYIndJIopCPxRT8DgLe0FqtCPj99EbnbIgxskEhYjSZ7hiGkZ+696ErRukAZbk/Ufp/sGKMrvAaryzxM8GgR4/McGra5jWEebh90fVH3YR6JC6PTHitsyLkDVO9qs7Cnep2OGbN6MHckZj5eB2ahvgHWn4G+4orxTfhGEOQOQOLIB7s/abVKz9dQEcnVevo0NHidDYQzfNpmucXImhRxvttLYmKbxCmwASatGLURUypPGH37V0b7vmAL5HhEN1QFQUjt9xZooUW/xw18+Hr0WcshVXKqhwrsXeyqTQ5dhIq4hFdj/TR63ligqLB1TkysyvQNBUJNz6Q2Ud7Ba5bOSqyPufvAoLuinNuCFQZvd4/kUnMjU8TYnoHlOvFMOgcdOYVAUlZfcy/m+sZUjO9QbiuXiURFo="/>
+        <input id="Request_Hash" name="Request_Hash" value="hAYl0F2Gkz8lRFyYIndJIopCPxRT8DgLe0FqtCPj99EbnbIgxskEhYjSZ7hiGkZ+696ErRukAZbk/Ufp/sGKMrvAaryzxM8GgR4/McGra5jWEebh90fVH3YR6JC6PTHitsyLkDVO9qs7Cnep2OGbN6MHckZj5eB2ahvgHWn4G+4orxTfhGEOQOQOLIB7s/abVKz9dQEcnVevo0NHidDYQzfNpmucXImhRxvttLYmKbxCmwASatGLURUypPGH37V0b7vmAL5HhEN1QFQUjt9xZooUW/xw18+Hr0WcshVXKqhwrsXeyqTQ5dhIq4hFdj/TR63ligqLB1TkysyvQNBUJNz6Q2Ud7Ba5bOSqyPufvAoLuinNuCFQZvd4/kUnMjU8TYnoHlOvFMOgcdOYVAUlZfcy/m+sZUjO9QbiuXiURFo="/>
         <input id="ChannelId" name="ChannelId" type="hidden" value="1001" />
         <input id="Currency" name="Currency" type="hidden" value="PKR" />
         <input id="IsBIN" name="IsBIN" type="hidden" value="0" />
