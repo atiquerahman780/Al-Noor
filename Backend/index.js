@@ -14,7 +14,21 @@ const app = express();
 app.use(cors());
 app.use(express.json()); // Middleware to parse JSON bodies
 
+app.use((req, res, next) => {
+  res.cookie('cookieName1', 'cookieValue1', {
+    sameSite: 'None', // or 'Lax' / 'Strict'
+    secure: true,     // Secure attribute must be true if SameSite=None
+    httpOnly: true
+  });
 
+  res.cookie('cookieName2', 'cookieValue2', {
+    sameSite: 'Strict', // or 'Lax'
+    secure: true,
+    httpOnly: true
+  });
+
+  next();
+});
 
 
 
