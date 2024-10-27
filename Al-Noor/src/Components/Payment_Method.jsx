@@ -9,9 +9,21 @@ function Payment_Method() {
   const [Auth_token, setAuth_token] = useState("");
   const [transactionType, setTransactionType] = useState('');
   const [transactionReferenceNumber, setTransactionReferenceNumber] = useState('');
+
+  const [authToken, setAuthToken] = useState('');
   
 
   useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+
+    // Extract the AuthToken
+    const token = params.get('AuthToken');
+    if (token) {
+      setAuthToken(token);
+    }
+
+
+
     const runButton = document.getElementById("run");
     console.log("ssssssssssssssssss")
     const handelrunButton = (e) => {
@@ -60,6 +72,7 @@ function Payment_Method() {
 
   return (
     <div>
+      {authToken ? <p>{authToken}</p> : <p>No Auth Token found</p>}
       
       <input id="Key1" name="Key1" type="hidden" value="cx29ScERgFbyD56R" />
       <input id="Key2" name="Key2" type="hidden" value="9621725557413686" />
@@ -71,10 +84,7 @@ function Payment_Method() {
         method="post"
         noValidate="noValidate"
       >
-        <input id="AuthToken" name="AuthToken" value={Auth_token} 
-        onChange={(e) => {
-          setAuth_token(e.target.value)
-          console.log(e.target.value)}} />
+        <input id="AuthToken" name="AuthToken" value={authToken} />
         <input
           id="HS_RequestHash"
           name="HS_RequestHash"
