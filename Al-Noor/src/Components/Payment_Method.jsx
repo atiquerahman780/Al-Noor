@@ -60,12 +60,7 @@ function Payment_Method() {
 
   return (
     <div>
-      <script
-        src="https://code.jquery.com/jquery-1.12.4.min.js"
-        integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="
-        crossOrigin="anonymous"
-      ></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js"></script>
+      
       <input id="Key1" name="Key1" type="hidden" value="cx29ScERgFbyD56R" />
       <input id="Key2" name="Key2" type="hidden" value="9621725557413686" />
     
