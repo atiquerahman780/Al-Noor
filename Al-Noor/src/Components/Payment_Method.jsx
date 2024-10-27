@@ -28,7 +28,7 @@ function Payment_Method() {
     console.log("ssssssssssssssssss")
     const handelrunButton = (e) => {
         e.preventDefault(); 
-        submitRequest('PageRedirectionForm'); // Replace this with your function logic
+        //submitRequest('PageRedirectionForm'); // Replace this with your function logic
         document.getElementById("PageRedirectionForm").submit();
     };
 
@@ -41,34 +41,34 @@ function Payment_Method() {
     }
   }, []);
 
-  const submitRequest = (formName) => {
-    const form = document.getElementById(formName);
-    let mapString = "";
+  // const submitRequest = (formName) => {
+  //   const form = document.getElementById(formName);
+  //   let mapString = "";
 
-    Array.from(form.elements).forEach((element) => {
-      if (element.id) {
-        mapString += `${element.id}=${element.value}&`;
-      }
-    });
+  //   Array.from(form.elements).forEach((element) => {
+  //     if (element.id) {
+  //       mapString += `${element.id}=${element.value}&`;
+  //     }
+  //   });
 
-    const key1 = document.getElementById("Key1").value;
-    const key2 = document.getElementById("Key2").value;
+  //   const key1 = document.getElementById("Key1").value;
+  //   const key2 = document.getElementById("Key2").value;
 
-    const encrypted = CryptoJS.AES.encrypt(
-      CryptoJS.enc.Utf8.parse(mapString.slice(0, -1)),
-      CryptoJS.enc.Utf8.parse(key1),
-      {
-        iv: CryptoJS.enc.Utf8.parse(key2),
-        mode: CryptoJS.mode.CBC,
-        padding: CryptoJS.pad.Pkcs7,
-      }
-    );
+  //   const encrypted = CryptoJS.AES.encrypt(
+  //     CryptoJS.enc.Utf8.parse(mapString.slice(0, -1)),
+  //     CryptoJS.enc.Utf8.parse(key1),
+  //     {
+  //       iv: CryptoJS.enc.Utf8.parse(key2),
+  //       mode: CryptoJS.mode.CBC,
+  //       padding: CryptoJS.pad.Pkcs7,
+  //     }
+  //   );
 
-    document.getElementById("HS_RequestHash").value = encrypted.toString();
+  //   document.getElementById("HS_RequestHash").value = encrypted.toString();
     
     
-    console.log(encrypted.toString())
-  };
+  //   console.log(encrypted.toString())
+  // };
 
   return (
     <div>
@@ -82,17 +82,15 @@ function Payment_Method() {
         action="https://sandbox.bankalfalah.com/SSO/SSO/SSO"
         id="PageRedirectionForm"
         method="post"
-        noValidate="noValidate"
+        novalidate="novalidate"
       >
         <input id="AuthToken" name="AuthToken" value={authToken} />
         <input
           id="HS_RequestHash"
           name="HS_RequestHash"
           type="hidden"
-          value={HS_RequestHash}
-          onChange={(e) => {setHS_RequestHash(e.target.value)
-            console.log(e.target.value)
-          }}
+          value="hAYl0F2Gkz8lRFyYIndJIopCPxRT8DgLe0FqtCPj99EbnbIgxskEhYjSZ7hiGkZ+696ErRukAZbk/Ufp/sGKMrvAaryzxM8GgR4/McGra5jWEebh90fVH3YR6JC6PTHitsyLkDVO9qs7Cnep2OGbN6MHckZj5eB2ahvgHWn4G+4orxTfhGEOQOQOLIB7s/abVKz9dQEcnVevo0NHidDYQzfNpmucXImhRxvttLYmKbxCmwASatGLURUypPGH37V0b7vmAL5HhEN1QFQUjt9xZooUW/xw18+Hr0WcshVXKqhwrsXeyqTQ5dhIq4hFdj/TR63ligqLB1TkysyvQNBUJNz6Q2Ud7Ba5bOSqyPufvAoLuinNuCFQZvd4/kUnMjU8v7zue0Y42B5URQQrtql+QZ0hExx9mTbeRGC7G4GgI0M="
+          
         />
         <input id="ChannelId" name="ChannelId" type="hidden" value="1001" />
         <input id="Currency" name="Currency" type="hidden" value="PKR" />
