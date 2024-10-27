@@ -2,6 +2,7 @@ import Header from "./Components/Header"
 import Products from './Components/Products'
 import Footer from './Components/Footer'
 import PreparedBy from "./Components/PreparedBy"
+import Run from "./Components/Run"
 import { Outlet } from "react-router-dom"
 import Axios from 'axios';
 import React, { useState, useEffect } from 'react';
@@ -19,6 +20,7 @@ function App(){
         <Products/>
         <Footer/>
         <PreparedBy/>
+        <Run/>
         
         </>
         
