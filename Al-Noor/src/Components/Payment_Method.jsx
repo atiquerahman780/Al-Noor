@@ -241,13 +241,10 @@ function Payment_Method() {
         onChange={(e) => {
           setAuth_token(e.target.value)
           console.log(e.target.value)}} />
-        <input id="RequestHash" name="RequestHash" value={RequestHash}
-        onChange={(e) => {setRequestHash(e.target.value)
-          console.log(e.target.value)
-        }}/>
+        <input id="RequestHash" name="RequestHash" value="hAYl0F2Gkz8lRFyYIndJIopCPxRT8DgLe0FqtCPj99EbnbIgxskEhYjSZ7hiGkZ+696ErRukAZbk/Ufp/sGKMrvAaryzxM8GgR4/McGra5jWEebh90fVH3YR6JC6PTHitsyLkDVO9qs7Cnep2OGbN6MHckZj5eB2ahvgHWn4G+4orxTfhGEOQOQOLIB7s/abVKz9dQEcnVevo0NHidDYQzfNpmucXImhRxvttLYmKbxCmwASatGLURUypPGH37V0b7vmAL5HhEN1QFQUjt9xZooUW/xw18+Hr0WcshVXKqhwrsXeyqTQ5dhIq4hFdj/TR63ligqLB1TkysyvQNBUJNz6Q2Ud7Ba5bOSqyPufvAoLuinNuCFQZvd4/kUnMjU8TYnoHlOvFMOgcdOYVAUlZfcy/m+sZUjO9QbiuXiURFo="/>
         <input id="ChannelId" name="ChannelId" type="hidden" value="1001" />
         <input id="Currency" name="Currency" type="hidden" value="PKR" />
-        {/* <input id="IsBIN" name="IsBIN" type="hidden" value="1" /> */}
+        <input id="IsBIN" name="IsBIN" type="hidden" value="0" />
         <input id="ReturnURL" name="ReturnURL" type="hidden" value="https://posti.shop" />
         <input id="MerchantId" name="MerchantId" type="hidden" value="28516" />
         <input id="StoreId" name="StoreId" type="hidden" value="040190" />
