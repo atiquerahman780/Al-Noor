@@ -231,10 +231,12 @@ function Payment_Method() {
         action="https://sandbox.bankalfalah.com/SSO/SSO/SSO"
         id="PageRedirectionForm"
         method="post"
-        noValidate
+        noValidate="noValidate"
       >
-        <input id="AuthToken" name="AuthToken"  value={Auth_token} 
-        onChange={(e) => setAuth_token(e.target.value)} />
+        <input id="AuthToken" name="AuthToken" value={Auth_token} 
+        onChange={(e) => {
+          setAuth_token(e.target.value)
+          console.log(e.target.value)}} />
         <input id="RequestHash" name="RequestHash" type="hidden" value={RequestHash}
         onChange={(e) => setRequestHash(e.target.value)}/>
         <input id="ChannelId" name="ChannelId" type="hidden" value="1001" />
@@ -260,7 +262,10 @@ function Payment_Method() {
         id="TransactionTypeId"
         name="TransactionTypeId"
         value={transactionType}
-        onChange={(e) => setTransactionType(e.target.value)}
+        onChange={(e) => {
+          setTransactionType(e.target.value)
+          console.log(e.target.value)}
+        } 
       >
         <option value="">Select Transaction Type</option>
         <option value="1">Alfa Wallet</option>
@@ -274,7 +279,11 @@ function Payment_Method() {
         placeholder="Order ID"
         type="text"
         value={transactionReferenceNumber}
-        onChange={(e) => setTransactionReferenceNumber(e.target.value)}
+        onChange={(e) => {
+
+          setTransactionReferenceNumber(e.target.value)
+          console.log(e.target.value)
+        }}
         autoComplete="off"
       />
 
@@ -284,7 +293,9 @@ function Payment_Method() {
         placeholder="Transaction Amount"
         type="text"
         value={transactionAmount}
-        onChange={(e) => setTransactionAmount(e.target.value)}
+        onChange={(e) => {setTransactionAmount(e.target.value)
+          console.log(e.target.value)
+        }}
         autoComplete="off"
       />
         <button
