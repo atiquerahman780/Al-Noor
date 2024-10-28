@@ -27,15 +27,15 @@ function Payment_Method() {
     };
   }, []);
 
-  const submitRequest = () => {
-    // const form = document.getElementById(formName);
-    // let mapString = "";
+  const submitRequest = (formName) => {
+    const form = document.getElementById(formName);
+    let mapString = "";
 
-    // console.log(form)
+    console.log(form)
     
-    // Array.from(form.elements).forEach((element) => {
-    //   if (element.id) mapString += `${element.id}=${element.value}&`;
-    // });
+    Array.from(form.elements).forEach((element) => {
+      if (element.id) mapString += `${element.id}=${element.value}&`;
+    });
 
     // const key1 = document.getElementById("Key1").value;
     // const key2 = document.getElementById("Key2").value;
