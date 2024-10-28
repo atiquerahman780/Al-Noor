@@ -62,7 +62,6 @@ function Payment_Method() {
       console.log("AuthToken:", token); // Optional: Log the token
     console.log(document.getElementById("RequestHash").value)
     console.log(document.getElementById("AuthToken").value)
-  debugger
     
   };
 
