@@ -27,36 +27,36 @@ function Payment_Method() {
     };
   }, []);
 
-  const submitRequest = (formName) => {
-    const form = document.getElementById(formName);
-    let mapString = "";
+  const submitRequest = () => {
+    // const form = document.getElementById(formName);
+    // let mapString = "";
 
-    console.log(form)
+    // console.log(form)
     
-    Array.from(form.elements).forEach((element) => {
-      if (element.id) mapString += `${element.id}=${element.value}&`;
-    });
+    // Array.from(form.elements).forEach((element) => {
+    //   if (element.id) mapString += `${element.id}=${element.value}&`;
+    // });
 
-    const key1 = document.getElementById("Key1").value;
-    const key2 = document.getElementById("Key2").value;
+    // const key1 = document.getElementById("Key1").value;
+    // const key2 = document.getElementById("Key2").value;
 
-    const encrypted = CryptoJS.AES.encrypt(
-      CryptoJS.enc.Utf8.parse(mapString.slice(0, -1)),
-      CryptoJS.enc.Utf8.parse(key1),
-      {
-        iv: CryptoJS.enc.Utf8.parse(key2),
-        mode: CryptoJS.mode.CBC,
-        padding: CryptoJS.pad.Pkcs7,
-      }
-    );
+    // const encrypted = CryptoJS.AES.encrypt(
+    //   CryptoJS.enc.Utf8.parse(mapString.slice(0, -1)),
+    //   CryptoJS.enc.Utf8.parse(key1),
+    //   {
+    //     iv: CryptoJS.enc.Utf8.parse(key2),
+    //     mode: CryptoJS.mode.CBC,
+    //     padding: CryptoJS.pad.Pkcs7,
+    //   }
+    // );
 
     const params = new URLSearchParams(window.location.search);
     const token = params.get('AuthToken');
     
 
-    document.getElementById("HS_RequestHash").value = encrypted.toString();
+    document.getElementById("RequestHash").value = "hAYl0F2Gkz8lRFyYIndJIopCPxRT8DgLe0FqtCPj99EbnbIgxskEhYjSZ7hiGkZ+696ErRukAZbk/Ufp/sGKMrvAaryzxM8GgR4/McGra5jWEebh90fVH3YR6JC6PTHitsyLkDVO9qs7Cnep2OGbN6MHckZj5eB2ahvgHWn4G+4orxTfhGEOQOQOLIB7s/abVKz9dQEcnVevo0NHidDYQzfNpmucXImhRxvttLYmKbxCmwASatGLURUypPGH37V0b7vmAL5HhEN1QFQUjt9xZooUW/xw18+Hr0WcshVXKqhwrsXeyqTQ5dhIq4hFdj/TR63ligqLB1TkysyvQNBUJNz6Q2Ud7Ba5bOSqyPufvAoLuinNuCFQZvd4/kUnMjU8ZhpnjG8gsc2yBIhVYUVA32IgWQ6Zgo44Ymd9+/EiXSg=";
     document.getElementById("AuthToken").value = token;
-    console.log(document.getElementById("HS_RequestHash").value)
+    console.log(document.getElementById("RequestHash").value)
     console.log(document.getElementById("AuthToken").value)
   
     
@@ -66,8 +66,8 @@ function Payment_Method() {
     <div>
       {authToken ? <p>Auth Token: {authToken}</p> : <p>No Auth Token found</p>}
       
-      <input id="Key1" name="Key1" type="hidden" value="cx29ScERgFbyD56R" />
-      <input id="Key2" name="Key2" type="hidden" value="9621725557413686" />
+      {/* <input id="Key1" name="Key1" type="hidden" value="cx29ScERgFbyD56R" />
+      <input id="Key2" name="Key2" type="hidden" value="9621725557413686" /> */}
     
       <h3>Page Redirection Request</h3>
       <form
@@ -77,8 +77,8 @@ function Payment_Method() {
       >
         <input id="AuthToken" name="AuthToken" type="hidden" value="" />
         <input
-          id="HS_RequestHash"
-          name="HS_RequestHash"
+          id="RequestHash"
+          name="RequestHash"
           type="hidden"
           value=""
         />
