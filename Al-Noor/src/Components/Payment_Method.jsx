@@ -54,7 +54,7 @@ function Payment_Method() {
     
 
     document.getElementById("RequestHash").value = encrypted.toString()
-    document.getElementById("AuthToken").value = authToken.toString();
+    
     
       
       
@@ -79,6 +79,7 @@ function Payment_Method() {
         <input id="AuthToken" name="AuthToken" type="text" value={authToken} onChange={(e) => {
             setAuthToken(e.target.value);
             console.log(e.target.value);
+            document.getElementById("AuthToken").value = e.target.value;
           }}/>
         <input
           id="RequestHash"
