@@ -57,7 +57,7 @@ function Payment_Method() {
     document.getElementById("AuthToken").value = authToken.toString();
     
       
-      console.log("AuthToken:", token); // Optional: Log the token
+      
     console.log(document.getElementById("RequestHash").value)
     console.log(document.getElementById("AuthToken").value)
     
@@ -88,7 +88,7 @@ function Payment_Method() {
         />
         <input id="ChannelId" name="ChannelId" type="hidden" value="1001" />
         <input id="Currency" name="Currency" type="hidden" value="PKR" />
-        {/* <input id="IsBIN" name="IsBIN" type="hidden" value="1" /> */}
+        <input id="IsBIN" name="IsBIN" type="hidden" value="0" />
         <input id="ReturnURL" name="ReturnURL" type="hidden" value="https://posti.shop" />
         <input id="MerchantId" name="MerchantId" type="hidden" value="28516" />
         <input id="StoreId" name="StoreId" type="hidden" value="040190" />
