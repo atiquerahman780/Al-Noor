@@ -55,7 +55,8 @@ function Payment_Method() {
     
 
     document.getElementById("RequestHash").value = "hAYl0F2Gkz8lRFyYIndJIopCPxRT8DgLe0FqtCPj99EbnbIgxskEhYjSZ7hiGkZ+696ErRukAZbk/Ufp/sGKMrvAaryzxM8GgR4/McGra5jWEebh90fVH3YR6JC6PTHitsyLkDVO9qs7Cnep2OGbN6MHckZj5eB2ahvgHWn4G+4orxTfhGEOQOQOLIB7s/abVKz9dQEcnVevo0NHidDYQzfNpmucXImhRxvttLYmKbxCmwASatGLURUypPGH37V0b7vmAL5HhEN1QFQUjt9xZooUW/xw18+Hr0WcshVXKqhwrsXeyqTQ5dhIq4hFdj/TR63ligqLB1TkysyvQNBUJNz6Q2Ud7Ba5bOSqyPufvAoLuinNuCFQZvd4/kUnMjU8ZhpnjG8gsc2yBIhVYUVA32IgWQ6Zgo44Ymd9+/EiXSg=";
-    document.getElementById("AuthToken").value = token;
+    document.getElementById("AuthToken").value = token.toString();
+    
     console.log(document.getElementById("RequestHash").value)
     console.log(document.getElementById("AuthToken").value)
   
@@ -84,7 +85,7 @@ function Payment_Method() {
         />
         <input id="ChannelId" name="ChannelId" type="hidden" value="1001" />
         <input id="Currency" name="Currency" type="hidden" value="PKR" />
-        <input id="IsBIN" name="IsBIN" type="hidden" value="0" />
+        <input id="IsBIN" name="IsBIN" type="hidden" value="1" />
         <input id="ReturnURL" name="ReturnURL" type="hidden" value="https://posti.shop" />
         <input id="MerchantId" name="MerchantId" type="hidden" value="28516" />
         <input id="StoreId" name="StoreId" type="hidden" value="040190" />
@@ -128,19 +129,16 @@ function Payment_Method() {
         <input
           id="TransactionReferenceNumber"
           name="TransactionReferenceNumber"
-          placeholder="Order ID"
-          type="text"
-          defaultValue="a"
-          autoComplete="off"
+          type="hidden"
+          value="asdf"
         />
 
         <input
           id="TransactionAmount"
           name="TransactionAmount"
-          placeholder="Transaction Amount"
-          type="text"
-          defaultValue="100"
-          autoComplete="off"
+          type="hidden"
+          value="100"
+          
         />
         <button
           type="submit"
