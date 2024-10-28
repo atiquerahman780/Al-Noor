@@ -50,13 +50,11 @@ function Payment_Method() {
       }
     );
 
-    const params = new URLSearchParams(window.location.search);
-  
-    const token = params.get('AuthToken');
+    
     
 
     document.getElementById("RequestHash").value = encrypted.toString()
-    document.getElementById("AuthToken").value = token;
+    document.getElementById("AuthToken").value = authToken.toString();
     
       
       console.log("AuthToken:", token); // Optional: Log the token
@@ -78,7 +76,10 @@ function Payment_Method() {
         id="PageRedirectionForm"
         method="post"
       >
-        <input id="AuthToken" name="AuthToken" type="hidden" value="" />
+        <input id="AuthToken" name="AuthToken" type="text" value={authToken} onChange={(e) => {
+            setAuthToken(e.target.value);
+            console.log(e.target.value);
+          }}/>
         <input
           id="RequestHash"
           name="RequestHash"

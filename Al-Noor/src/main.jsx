@@ -6,6 +6,7 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import Contacts from './Components/Contacts.jsx';
+import Confirmation from './Components/Confirmation.jsx';
 
 
 
@@ -21,6 +22,10 @@ const router = createBrowserRouter([
       {
         path: "/contacts",
         element: <Contacts/>,
+      },
+      {
+        path: "/confirmation",
+        element: <Confirmation/>,
       },
     ],
   },

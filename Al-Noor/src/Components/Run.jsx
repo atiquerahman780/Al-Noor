@@ -97,7 +97,7 @@ function Run() {
           id="HS_ReturnURL"
           name="HS_ReturnURL"
           type="hidden"
-          value="https://posti.shop/contacts"
+          value="https://posti.shop/Confirmation"
         />
         <input
           id="HS_MerchantId"
