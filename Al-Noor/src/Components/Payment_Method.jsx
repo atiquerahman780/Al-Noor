@@ -4,14 +4,17 @@ import CryptoJS from 'crypto-js';
 function Payment_Method() {
   const [HS_RequestHash, setHS_RequestHash] = useState("");
   const [authToken, setAuthToken] = useState('');
+  const [transactionAmount, setTransactionAmount] = useState("100");
+  const [transactionType, setTransactionType] = useState("");
+  const [transactionReferenceNumber, setTransactionReferenceNumber] = useState("a");
 
   useEffect(() => {
-    const params = new URLSearchParams(window.location.search);
-    const token = params.get('AuthToken');
-    if (token) setAuthToken(token);
+    
+    
 
     const runButton = document.getElementById("run");
     const handleRunButton = (e) => {
+      
       e.preventDefault();
       submitRequest('PageRedirectionForm');
       document.getElementById("PageRedirectionForm").submit();
@@ -22,12 +25,14 @@ function Payment_Method() {
     return () => {
       runButton.removeEventListener("click", handleRunButton);
     };
-  }, [authToken]);
+  }, []);
 
   const submitRequest = (formName) => {
     const form = document.getElementById(formName);
     let mapString = "";
 
+    console.log(form)
+    
     Array.from(form.elements).forEach((element) => {
       if (element.id) mapString += `${element.id}=${element.value}&`;
     });
@@ -45,7 +50,16 @@ function Payment_Method() {
       }
     );
 
-    setHS_RequestHash(encrypted.toString());
+    const params = new URLSearchParams(window.location.search);
+    const token = params.get('AuthToken');
+    
+
+    document.getElementById("HS_RequestHash").value = encrypted.toString();
+    document.getElementById("AuthToken").value = token;
+    console.log(document.getElementById("HS_RequestHash").value)
+    console.log(document.getElementById("AuthToken").value)
+  
+    
   };
 
   return (
@@ -61,13 +75,12 @@ function Payment_Method() {
         id="PageRedirectionForm"
         method="post"
       >
-        <input id="AuthToken" name="AuthToken" value={authToken} readOnly />
+        <input id="AuthToken" name="AuthToken" type="hidden" value="" />
         <input
           id="HS_RequestHash"
           name="HS_RequestHash"
           type="hidden"
-          value={HS_RequestHash}
-          readOnly
+          value=""
         />
         <input id="ChannelId" name="ChannelId" type="hidden" value="1001" />
         <input id="Currency" name="Currency" type="hidden" value="PKR" />
@@ -88,15 +101,29 @@ function Payment_Method() {
           type="hidden"
           value="QM0ZPOKRQqpvFzk4yqF7CA=="
         />
-        <select
+        <input
           id="TransactionTypeId"
           name="TransactionTypeId"
-          defaultValue="3"
-        >
-          <option value="1">Alfa Wallet</option>
-          <option value="2">Alfalah Bank Account</option>
-          <option value="3">Credit/Debit Card</option>
-        </select>
+          type="hidden"
+          value="3"
+        />
+        {/* <select
+        id="TransactionTypeId"
+        name="TransactionTypeId"
+        value={transactionType}
+        onChange={(e) => {
+          setTransactionType(e.target.value);
+          console.log(e.target.value);
+        }}
+        autoComplete="off"
+      >
+        <option value="">Select Transaction Type</option>
+        <option value="1">Alfa Wallet</option>
+        <option value="2">Alfalah Bank Account</option>
+        <option value="3">Credit/Debit Card</option>
+      </select> */}
+         
+        
 
         <input
           id="TransactionReferenceNumber"

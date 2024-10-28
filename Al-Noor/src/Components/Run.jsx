@@ -2,15 +2,20 @@ import React from "react";
 import { useState, useEffect} from "react";
 import CryptoJS from 'crypto-js';
 function Run() {
-  const [HS_RequestHash, setHS_RequestHash] = useState("");
+  //const [HS_RequestHash, setHS_RequestHash] = useState("");
   const [HS_TransactionReferenceNumber, setHS_TransactionReferenceNumber] =
     useState("");
   // use Effect
   useEffect(() => {
     const handshakeButton = document.getElementById("handshake");
     console.log("ssssssssssssssssss");
+    // console.log(HS_RequestHash)
+    
+    
+
     
     const handleHandshakeClick = (e) => {
+      // console.log(HS_RequestHash)
       e.preventDefault();
       handshakeButton.setAttribute("disabled", "disabled");
       submitRequest("HandshakeForm");
@@ -19,20 +24,23 @@ function Run() {
         document.getElementById("HandshakeForm").submit();
       } 
     };
-
     handshakeButton.addEventListener("click", handleHandshakeClick);
-
     // Cleanup listener on component unmount
     return () => {
       handshakeButton.removeEventListener("click", handleHandshakeClick);
     };
   }, []);
+  
 
   // encription
   const submitRequest = (formName) => {
+    
     const form = document.getElementById(formName);
     let mapString = "";
 
+    console.log(form)
+    
+    // console.log(HS_RequestHash)
     Array.from(form.elements).forEach((element) => {
       if (element.id) {
         mapString += `${element.id}=${element.value}&`;
@@ -55,7 +63,8 @@ function Run() {
     document.getElementById("HS_RequestHash").value = encrypted.toString();
 
     console.log(encrypted.toString());
-  };
+    console.log(document.getElementById("HS_RequestHash").value)
+    };
   return (
     <div>
       <input id="Key1" name="Key1" type="hidden" value="cx29ScERgFbyD56R" />
@@ -69,8 +78,7 @@ function Run() {
           id="HS_RequestHash"
           name="HS_RequestHash"
           type="hidden"
-          value={HS_RequestHash}
-          onChange={(e) => setHS_RequestHash(e.target.value)}
+          value=""
         />
         <input
           id="HS_IsRedirectionRequest"
