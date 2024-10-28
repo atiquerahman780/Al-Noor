@@ -1,57 +1,35 @@
-import React from "react";
-import { useState } from 'react';
-import { useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 import CryptoJS from 'crypto-js';
 
 function Payment_Method() {
   const [HS_RequestHash, setHS_RequestHash] = useState("");
-  const [transactionAmount, setTransactionAmount] = useState('');
-  const [Auth_token, setAuth_token] = useState("");
-  const [transactionType, setTransactionType] = useState('');
-  const [transactionReferenceNumber, setTransactionReferenceNumber] = useState('');
-
   const [authToken, setAuthToken] = useState('');
-  
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
-
-    // Extract the AuthToken
     const token = params.get('AuthToken');
-    if (token) {
-      setAuthToken(token);
-    }
-
-
+    if (token) setAuthToken(token);
 
     const runButton = document.getElementById("run");
-    console.log("ssssssssssssssssss")
-    const handelrunButton = (e) => {
-        e.preventDefault(); 
-        console.log(transactionAmount)
-        console.log(transactionType)
-        console.log(transactionReferenceNumber)
-        submitRequest('PageRedirectionForm'); // Replace this with your function logic
-        document.getElementById("PageRedirectionForm").submit();
+    const handleRunButton = (e) => {
+      e.preventDefault();
+      submitRequest('PageRedirectionForm');
+      document.getElementById("PageRedirectionForm").submit();
     };
 
-    
-    runButton.addEventListener("click",handelrunButton);
+    runButton.addEventListener("click", handleRunButton);
 
-    // Cleanup listener on component unmount
     return () => {
-        runButton.removeEventListener("click",handelrunButton)
-    }
-  }, []);
+      runButton.removeEventListener("click", handleRunButton);
+    };
+  }, [authToken]);
 
   const submitRequest = (formName) => {
     const form = document.getElementById(formName);
     let mapString = "";
 
     Array.from(form.elements).forEach((element) => {
-      if (element.id) {
-        mapString += `${element.id}=${element.value}&`;
-      }
+      if (element.id) mapString += `${element.id}=${element.value}&`;
     });
 
     const key1 = document.getElementById("Key1").value;
@@ -67,15 +45,12 @@ function Payment_Method() {
       }
     );
 
-    document.getElementById("HS_RequestHash").value = encrypted.toString();
-    
-    
-    console.log(encrypted.toString())
+    setHS_RequestHash(encrypted.toString());
   };
 
   return (
     <div>
-      {authToken ? <p>{authToken}</p> : <p>No Auth Token found</p>}
+      {authToken ? <p>Auth Token: {authToken}</p> : <p>No Auth Token found</p>}
       
       <input id="Key1" name="Key1" type="hidden" value="cx29ScERgFbyD56R" />
       <input id="Key2" name="Key2" type="hidden" value="9621725557413686" />
@@ -85,20 +60,14 @@ function Payment_Method() {
         action="https://sandbox.bankalfalah.com/SSO/SSO/SSO"
         id="PageRedirectionForm"
         method="post"
-        novalidate="novalidate"
       >
-        <input id="AuthToken" name="AuthToken" value={authToken} />
+        <input id="AuthToken" name="AuthToken" value={authToken} readOnly />
         <input
           id="HS_RequestHash"
           name="HS_RequestHash"
           type="hidden"
           value={HS_RequestHash}
-          onChange={(e) => {
-
-            setHS_RequestHash(e.target.value)
-            console.log(e.target.value)
-          }}
-          
+          readOnly
         />
         <input id="ChannelId" name="ChannelId" type="hidden" value="1001" />
         <input id="Currency" name="Currency" type="hidden" value="PKR" />
@@ -120,50 +89,36 @@ function Payment_Method() {
           value="QM0ZPOKRQqpvFzk4yqF7CA=="
         />
         <select
-        id="TransactionTypeId"
-        name="TransactionTypeId"
-        value={transactionType}
-        onChange={(e) => {
-          setTransactionType(e.target.value)
-          console.log(e.target.value)}
-        } 
-      >
-        <option value="">Select Transaction Type</option>
-        <option value="1">Alfa Wallet</option>
-        <option value="2">Alfalah Bank Account</option>
-        <option value="3">Credit/Debit Card</option>
-      </select>
+          id="TransactionTypeId"
+          name="TransactionTypeId"
+          defaultValue="3"
+        >
+          <option value="1">Alfa Wallet</option>
+          <option value="2">Alfalah Bank Account</option>
+          <option value="3">Credit/Debit Card</option>
+        </select>
 
-      <input
-        id="TransactionReferenceNumber"
-        name="TransactionReferenceNumber"
-        placeholder="Order ID"
-        type="text"
-        value={transactionReferenceNumber}
-        onChange={(e) => {
+        <input
+          id="TransactionReferenceNumber"
+          name="TransactionReferenceNumber"
+          placeholder="Order ID"
+          type="text"
+          defaultValue="a"
+          autoComplete="off"
+        />
 
-          setTransactionReferenceNumber(e.target.value)
-          console.log(e.target.value)
-        }}
-        autoComplete="off"
-      />
-
-      <input
-        id="TransactionAmount"
-        name="TransactionAmount"
-        placeholder="Transaction Amount"
-        type="text"
-        value={transactionAmount}
-        onChange={(e) => {setTransactionAmount(e.target.value)
-          console.log(e.target.value)
-        }}
-        autoComplete="off"
-      />
+        <input
+          id="TransactionAmount"
+          name="TransactionAmount"
+          placeholder="Transaction Amount"
+          type="text"
+          defaultValue="100"
+          autoComplete="off"
+        />
         <button
           type="submit"
           className="btn btn-custon-four btn-danger"
           id="run"
-          
         >
           RUN
         </button>
