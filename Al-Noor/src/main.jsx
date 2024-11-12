@@ -5,28 +5,83 @@ import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
-import Contacts from './Components/Contacts.jsx';
+import Cart from './Components/Cart.jsx';
 import Confirmation from './Components/Confirmation.jsx';
+import Products from './Components/Products.jsx';
+import HeaderArea from './Components/HeaderArea.jsx';
+import Reviews from './Components/Reviews.jsx';
+import ProceedToPay from './Components/ProceedToPay.jsx';
+import CustomerForm from './Components/CustomerForm.jsx';
+import Run from './Components/Run.jsx';
 
 
 
 const router = createBrowserRouter([
   {
-    // path: "/",
-    // element: <App/>,
+    path: "/",
+    element: <App/>,
      children: [
       {
         path: "/",
-        element: <App/>,
+        element: <>
+        <HeaderArea/>
+        <Products/>
+        </>,
       },
       {
-        path: "/contacts",
-        element: <Contacts/>,
+        path: "/reviews",
+        element: <>
+        <HeaderArea/>
+        <Reviews/>,
+
+        </>
+      },
+      {
+        path: "/cart",
+        element: 
+        <>
+        <HeaderArea/>
+        <Cart/>,
+        </>
+        
+      },
+      {
+        path: "/proceed_to_pay",
+        element: 
+        <>
+        <HeaderArea/>
+        <ProceedToPay/>,
+        </>
+        
+      },
+      {
+        path: "/shipping_information",
+        element: 
+        <>
+        <HeaderArea/>
+        <CustomerForm/>,
+        </>
+        
+      },
+      {
+        path: "/run",
+        element: 
+        <>
+        <HeaderArea/>
+        <Run/>,
+        </>
+        
       },
       {
         path: "/confirmation",
-        element: <Confirmation/>,
+        element: 
+        <>
+        <HeaderArea/>
+        <Confirmation/>,
+        </>
+        
       },
+      
     ],
   },
 ]);

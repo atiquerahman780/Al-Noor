@@ -1,14 +1,28 @@
 .Product_Image{
-    width: 250px;
+    width: 500px;
     
 }
 .Product_Cart{
-    margin: 20px;
-    width: 250px;
-    background-color: #fff;
-    border: solid white;
+    margin-top: 60px;
+    width: 70%;
+    min-height: 500px;
+    /* background-color: #fff; */
+    /* rgb(239,238,235); */
+    border: solid white; 
+    border-bottom: solid rgb(239,238,235);
+    border-right: solid rgb(239,238,235);;
     border-radius: 10px;
+    display: flex;
+    flex-wrap : wrap;
+    justify-content: space-around;
+    overflow: hidden;
 
+    
+
+}
+
+.Detail{
+    margin: 50px;
 }
 .P_title{
     margin: 0%;
@@ -23,6 +37,14 @@
     padding-top: 10px;
     vertical-align: middle;
     
+    
+}
+.arrowImage{
+    width: 15px;
+    text-align: right;
+    justify-content: right;
+    
+    /* margin: auto; */
 }
 
 .P_gram{
@@ -33,7 +55,7 @@
     margin: 5px;
     padding: 5px;
     border-radius: 20px;
-    background-color: aqua;
+    background-color: rgb(239,238,235);;
 }
 .product_description{
     padding: 10px;
@@ -43,30 +65,20 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
+     
 }
 
 
 .Cart_button{
-    width: 125px;
+    width: 100%;
     padding: 10px;
     margin-bottom: 10px;
     border-radius: 10px;
     color: white;
     background-color: #333;
 }
-.Buy_now_button{
-    width: 250px;
-    padding: 10px;
-    margin-bottom: 10px;
-    border-radius: 10px;
-    color: white;
-    background-color: #333;
-}
-.buttons{
-    display: flex;
-  align-items: center;
-  justify-content: center;
-}
+
+
 .plus_minus{
     margin: auto;
 
@@ -74,7 +86,7 @@
      border: solid #333;
     border-radius: 10px;
     margin-bottom: 10px;
-    background-color: aqua; 
+    background-color: rgb(239,238,235);; 
    
 }
 .vl{
@@ -95,4 +107,61 @@
 }
 .heading_margin_remove{
     margin: 0%;
+}
+.items{
+    width: 300px;
+    
+    
+}
+.design{
+    display: flex;
+    padding: 6px;
+    /* border-radius: 10px; */
+    justify-content: space-between;
+/*     
+    background-color: rgb(239,238,235); */
+}
+.item_design{
+    font-size: 13px;
+    
+}
+
+     
+   
+
+.new{
+    /* margin-top: 4px;
+    margin-bottom: 4px;
+    margin: 4px; */
+    margin-left: 10px;
+    margin-right: 10px;
+   font-size: 12px;
+    padding-left: 10px;
+    padding-right: 10px;
+    
+}
+.SImage{
+    width: 20px;
+    text-align: right;
+    justify-content: right;
+    padding: 5px;
+}
+
+@media (max-width: 730px) {
+    .Product_Image{
+        width: 200px;
+    }
+    
+}
+@media (max-width: 580px) {
+    .items{
+        width: 200px;
+        
+        
+    }
+    .Product_Cart{
+        margin: 20px;
+        width: 90%;
+    }
+    
 }

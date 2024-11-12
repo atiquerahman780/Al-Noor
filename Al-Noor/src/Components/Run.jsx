@@ -1,10 +1,14 @@
 import React from "react";
 import { useState, useEffect} from "react";
 import CryptoJS from 'crypto-js';
+import { useLocation } from 'react-router-dom';
 function Run() {
+  const location = useLocation();
+  const { key } = location.state || {};
   //const [HS_RequestHash, setHS_RequestHash] = useState("");
   const [HS_TransactionReferenceNumber, setHS_TransactionReferenceNumber] =
     useState("");
+    
   // use Effect
   useEffect(() => {
     const handshakeButton = document.getElementById("handshake");
@@ -67,9 +71,12 @@ function Run() {
   
     };
   return (
-    <div>
+    <div className="review-form-container">
       <input id="Key1" name="Key1" type="hidden" value="cx29ScERgFbyD56R" />
       <input id="Key2" name="Key2" type="hidden" value="9621725557413686" />
+      <h2>Step 1/4</h2>
+      <p>When you pay online through our website, your payment is securely processed via Alfalah Bank's gateway. This ensures your transaction is safe, encrypted, and verified directly with the bank. Your first step is Handshake</p>
+      <h1>Data Passed: {key}</h1>
       <form
         action="https://sandbox.bankalfalah.com/HS/HS/HS"
         id="HandshakeForm"
@@ -130,11 +137,8 @@ function Run() {
           type="text"
           autoComplete="off"
           placeholder="Order ID"
-          value={HS_TransactionReferenceNumber}
-          onChange={(e) => {
-            setHS_TransactionReferenceNumber(e.target.value);
-            console.log(e.target.value);
-          }}
+          value={key.toString()}
+          
         />
         <button
           type="submit"

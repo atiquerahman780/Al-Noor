@@ -1,63 +1,129 @@
 
-.Circle_Area{
-  width: 50px;
-  height: 50px;
-  
-  
-}
-.logo_img{
-  width: 50px;
-}
-
 
 body {
-  background-color: #f9f9f9;
-  margin: 0%;
+  margin: 0;
+  overflow-y: auto; 
+  height: 100vh;
+  position: relative;
+  overflow-y: auto;
+  align-items: center; /* Center content vertically */
+  justify-content: center; /* Center content horizontally */
 }
+
+/* Diagonal background layers */
+body::before, body::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1; /* Place the background layers below the content */
+}
+
+body::before {
+  background: rgb(239,238,235);
+  clip-path: polygon(0 0, 55% 0, 0 300%);
+}
+
+/* Main content */
+.main-content {
+  padding-top: 600px;
+  margin-top: 100px;
+  z-index: 1; /* Make sure content is above the background */
+  
+  
+}
+
 
 .wrapper {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 10px;
-  background-color: #333;
+  position: fixed;
+  top: 100;
+  left: 0;
+  width: 100%;
+  background-color: rgb(239,238,235);
+  
+  
 }
+
+
 .one {
   grid-column: 1;
   grid-row: 1/3;
-  color: white;
-  text-align: start;
-  padding: 10px;
-  background-color: #333;
+  text-align: center;
+  font-size: 1.6rem;
+  
+  font-weight: bold;
 }
 .two {
   grid-column: 2;
   grid-row: 1 / 3;
-  color: white;
-  font-size: 2rem;
-  background-color: #333;
+  display: flex;
+  font-size: 1rem;
+  font-weight: bold;
   text-align: center;
-  padding: 10px;
+  align-items: center;
+  justify-content: center;
+  
 }
 .three {
   grid-column: 3;
   grid-row: 1 / 3;
-  color: white;
-  background-color: #333;
-  text-align: end;
-  padding: 20px;
+  text-align: center;
+  justify-content: center;
+  display: inline-block;
+  margin: auto;
+  
 }
 .cardimg {
   width: 30px;
+  
 }
-@media (max-width: 722px) {
+
+.bar_space{
+  color: #000;
+
+}
+a:link { 
+  text-decoration: none; 
+}
+@media (max-width: 580px) {
   .two {
+    font-size: 0.7rem;
+  }
+  .one{
     font-size: 1rem;
+  }
+  .cardimg {
+    width: 20px;
+    
+  }
+  body{
+    margin: 0%;
+  }
+  body::before, body::after {
+    
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; /* Place the background layers below the content */
+  }
+  
+  body::before {
+    background: rgb(239,238,235);
+    clip-path: polygon(0 0, 112% 0, 0 29%);
+  }
+  
+  /* Main content */
+  .main-content {
+    z-index: 1; /* Make sure content is above the background */
+    
   }
   
 }
-@media (max-width: 832px) {
-  .two {
-    font-size: 1rem;
-  }
-  
-}
+

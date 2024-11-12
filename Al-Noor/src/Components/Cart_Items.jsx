@@ -46,7 +46,7 @@ function ShoppingCart() {
 
   return (
     <div className="cart-container">
-      <h2>Your Shopping Cart</h2>
+      <h2 >Your Shopping Cart</h2>
       {cartItems.length === 0 ? (
         <p>Your cart is empty.</p>
       ) : (
@@ -55,7 +55,7 @@ function ShoppingCart() {
             {cartItems.map((item) => (
               <li key={item.id} className="cart-item">
                 <div className="cart-details">
-                  <h3>{item.name}
+                  <h3 className="head">{item.name}
                     <span> ({item.ml}ml)</span>
                   </h3>
                   <p>Price: Rs. {item.price}</p>
@@ -79,7 +79,7 @@ function ShoppingCart() {
           </ul>
           <div className="cart-total">
             <h3>Total Price: Rs. {totalPrice}</h3>
-            <button className="checkout-btn">Checkout</button>
+            {/* <button className="checkout-btn">Checkout</button> */}
           </div>
         </div>
       )}

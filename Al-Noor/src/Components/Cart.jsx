@@ -1,9 +1,10 @@
 import React from 'react'
-import Header from "./Header"
-import ShoppingCart from './Cart_Items';
+import ShoppingCart from './Cart_Items.jsx';
 import CustomerForm from './CustomerForm.jsx';
 import Payment_Method from './Payment_Method.jsx';
- function Contacts() {
+import ShippingAddress from './ShippingAddress.jsx';
+import ProceedToPay from './ProceedToPay.jsx';
+ function Cart() {
 
   const savedProduct = JSON.parse(localStorage.getItem('product'));
 
@@ -12,13 +13,12 @@ if (savedProduct) {
 }
   return (
     <div>
-      <Header/>
-      
       <ShoppingCart/>
-      <CustomerForm/>
-      <Payment_Method/>
+      <ShippingAddress/>
+      <ProceedToPay/>
+      {/* <Payment_Method/> */}
       
     </div>
   )
 }
-export default Contacts
+export default Cart

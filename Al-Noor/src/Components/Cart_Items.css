@@ -1,7 +1,11 @@
 .cart-container {
-    padding: 20px;
+    
     max-width: 600px;
     margin: 0 auto;
+  }
+  .head{
+    padding: 0px;
+    margin: 0%;
   }
   
   .cart-list {
@@ -38,15 +42,9 @@
   }
   
   .cart-total {
-    padding: 10px;
+    padding: 0px;
     text-align: right;
   }
   
-  .checkout-btn {
-    background-color: green;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    cursor: pointer;
-  }
+ 
   

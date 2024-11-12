@@ -1,23 +1,34 @@
-
 import { Link } from "react-router-dom";
-import logo from "../assets/images/acon.webp";
-import cart_image from "../assets/images/cart.png";
+import account_image from "../assets/images/account_Icon.png";
 import "./Header.css";
-
+import { useLocalStorage } from "./useLocalStorage";
 function Header() {
+  const [savedShippingInformation, setsavedShippingInformation] = useLocalStorage("Shipping_Information", []);
+  
   return (
     <div className="wrapper">
       <div className="one">
-        <div className="Circle_Area">
-          <img className="logo_img" src={logo} alt="Logo" />
-        </div>
+      <pre>AL-NOOR</pre>
       </div>
       <div className="two">
-        <span>Al-Noor Desi Ghee</span>
+      <Link to="../">
+      <pre className="bar_space">DESIGHEE </pre>
+        </Link>
+        
+        <Link to="../reviews">
+        <pre className="bar_space"> REVIEWS </pre>
+        </Link>
+        
+        <Link to="../cart">
+        <pre className="bar_space"> CART
+          {/* <sup id="Ccount">({savedProduct[0].quantity})</sup> */}
+          </pre>
+        </Link>
+        
       </div>
       <div className="three">
-      <Link to="../contacts">
-        <img className="cardimg" src={cart_image} alt="cart Image"  />
+      <Link to="../shipping_information">
+        <img className="cardimg" src={account_image} alt="cart Image"  />
         </Link>
       </div>
     </div>

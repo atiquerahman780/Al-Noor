@@ -1,10 +1,21 @@
-import Product_Image from "../assets/images/Ghee_image.jpg";
+import Product_Image from "../assets/images/ghee_img.png";
+import downArrow_Img from "../assets/images/down-arrow.png";
 import Incredecrement from "./Incre-decrement";
 import "./Products.css";
 import { useState, useEffect } from "react";
 import { useLocalStorage } from "./useLocalStorage";
+import whatsapp_image from '../assets/images/whatsapp.png'
+import facebook_image from '../assets/images/facebook.png'
+import youtube_image from '../assets/images/youtube.png'
+
 
 function Products() {
+  const [selectedItemId, setSelectedItemId] = useState(null);
+
+    const handleClick = (id) => {
+      // Toggle the item’s detail view
+      setSelectedItemId(selectedItemId === id ? null : id);
+    };
   const [data, setData] = useState([]);
   const [savedProducts, setsavedProducts] = useLocalStorage("Cart_items", []);
 
@@ -24,18 +35,29 @@ function Products() {
   }
 
   function Cart(item) {
+    const items = [
+      { id: item._id+1, title: 'DESCRIPTION', details: <p>Desi Ghee, a nutrient-rich clarified butter, supports digestion and wellness, with additional benefits for postpartum recovery by aiding energy levels and immunity.</p> },
+      { id: item._id+2, title: 'PRODUCT DETAIL', details: <p>Desi Ghee is a premium, traditional clarified butter rich in healthy fats, essential vitamins, and nutrients.</p> },
+      { id: item._id+3, title: 'SHIPMENTS AND RETURNS', details:<p>Your order will be delivered by Leopard Courier. Both cash on delivery and card payment options are available, and returns can be made at any nearest Leopard office.</p>  },
+    ];
+    
     return (
-      <div className="Product_Cart" key={item._id}>
+      
+      // key={item._id}
+      
+      <div className="Product_Cart" >
+        <div className="image_area">
         <img className="Product_Image" src={Product_Image} alt="Loading..." />
-
-        <h2 className="P_title">Desi Ghee</h2>
+        </div>
+<div className="Detail">
+        <h2 className="P_title">{item.name}</h2>
         <span className="P_gram">{item.quantity}gm</span>
 
-        <h4 className="P_price">RS. {item.price}</h4>
-        <p className="product_description">
-          Desi Ghee is made from the pure cream of a blend of buffalo and cow
+        <h2 className="P_price">RS. {item.price}</h2>
+        {/* <p className="product_description">
+          Desi Ghee is made 
           milk.
-        </p>
+        </p> */}
 
         <div className="plus_minus">
           <Incredecrement id={item._id} />
@@ -84,39 +106,37 @@ function Products() {
             </button>
           </div>
         </h4>
-        <div className="buttons">
+        {/* <div className="buttons">
           <button
             className="Buy_now_button"
-            onClick={() => {
-              const newProduct = {
-                id: item._id,
-                name: "Olive Oil",
-                price: "700",
-                quantity: "1L",
-              };
-              const savedProducts = JSON.parse(
-                localStorage.getItem("products")
-              );
-
-              const productExists = savedProducts.some(
-                (product) => product.id === newProduct.id
-              );
-              console.log(productExists);
-
-              if (!productExists) {
-                setProducts([...products, newProduct]);
-                console.log("Product saved:");
-              } else {
-                console.log(
-                  "Product with this ID already exists in localStorage."
-                );
-              }
-            }}
+            
           >
             BUY IT NOW
           </button>
+          
+        </div> */}
+        <div className="items" >
+        {items.map((ite) => (
+          <>
+        <div  className="design" key={ite.id} onClick={() => handleClick(ite.id)}>
+          <span className="item_design">{ite.title}</span>
+          <img className="arrowImage" src={downArrow_Img} alt="arro" />
+          </div>
+          <div className="new">
+          {/* Show details only if the item is clicked */}
+          {selectedItemId === ite.id && <dev >{ite.details}</dev>}
+          </div>
+          </>
+      ))}
+        </div>
+        <div>
+          <img className="SImage" src={whatsapp_image} alt="" />
+          <img className="SImage" src={facebook_image} alt="" />
+          <img className="SImage" src={youtube_image} alt="" />
         </div>
       </div>
+      </div>
+      
     );
   }
 

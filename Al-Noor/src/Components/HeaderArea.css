@@ -1,0 +1,12 @@
+.headerArea{
+    height: 80px;
+    overflow: hidden;
+}
+
+@media (max-width: 580px) {
+    .headerArea{
+        height: 40px;
+        overflow: hidden;
+    }
+    
+}

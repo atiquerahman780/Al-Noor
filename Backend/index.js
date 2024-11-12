@@ -69,6 +69,7 @@ const orderSchema = new mongoose.Schema({
     contact: String, // Use consistent field names
     city: String,
     address: String
+    
   },
   products: [{
     id: String,

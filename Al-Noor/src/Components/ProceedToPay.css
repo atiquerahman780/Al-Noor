@@ -1,0 +1,72 @@
+.cart-containe {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  /* background-color: #f9f9f9; */
+  /* border-radius: 10px; */
+  /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
+}
+/* .payment-option {
+  margin: 10px;
+  display: flex;
+  align-items: start;
+  justify-content: flex-start;
+  
+} */
+/* .dot{
+  display: block;
+  align-items: center;
+  justify-content: flex-start;
+  text-align: end;
+} */
+ /* Container styling */
+label {
+  display: flex;
+  align-items: center;
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  
+  cursor: pointer;
+  padding: 8px 0;
+}
+
+/* Radio button styling */
+.dot {
+  vertical-align: middle;
+  align-items: center;
+  width: 15px;
+  height: 15px;
+  margin-top: 0;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+.payment-btn {
+  background-color: #4CAF50; /* Green background */
+  color: white; /* White text */
+  padding: 12px 24px; /* Padding for size */
+  font-size: 16px; /* Font size */
+  font-weight: bold;
+  border: none; /* No border */
+  border-radius: 8px; /* Rounded corners */
+  cursor: pointer; /* Pointer cursor on hover */
+  transition: background-color 0.3s ease; /* Smooth background transition */
+}
+
+/* Hover effect */
+.payment-btn:hover {
+  background-color: #45a049; /* Darker green on hover */
+}
+
+/* Active effect */
+.payment-btn:active {
+  background-color: #397c3d; /* Even darker green on click */
+}
+
+/* Responsive style for small screens */
+@media (max-width: 600px) {
+  .payment-btn {
+    width: 100%; /* Full width on small screens */
+    padding: 14px; /* Slightly larger padding */
+    font-size: 18px; /* Slightly larger font */
+  }
+}
