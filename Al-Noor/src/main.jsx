@@ -13,6 +13,7 @@ import Reviews from './Components/Reviews.jsx';
 import ProceedToPay from './Components/ProceedToPay.jsx';
 import CustomerForm from './Components/CustomerForm.jsx';
 import Run from './Components/Run.jsx';
+import Payment_Method from './Components/Payment_Method.jsx';
 
 
 
@@ -78,6 +79,15 @@ const router = createBrowserRouter([
         <>
         <HeaderArea/>
         <Confirmation/>,
+        </>
+        
+      },
+      {
+        path: "/contacts",
+        element: 
+        <>
+        <HeaderArea/>
+        <Payment_Method/>,
         </>
         
       },

@@ -2,9 +2,12 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import "./ProceedToPay.css";
 import { useState } from "react";
+import { useLocalStorage } from "./useLocalStorage";
 
 export default function ProceedToPay() {
   const [selectedMethod, setSelectedMethod] = useState("");
+  const [orderIDPrice, setorderIDPrice] = useLocalStorage("online_order_payment", []);
+  // const savedorderIDPrice = JSON.parse(localStorage.getItem("online_order_payment"));
   const navigate = useNavigate();
   function checkout() {
     
@@ -14,9 +17,7 @@ export default function ProceedToPay() {
 
     // Check if data exists and parse it as JSON
     const parsedCartItems = cartItems ? JSON.parse(cartItems) : [];
-    const parsedshippingAddress = shippingAddress
-      ? JSON.parse(shippingAddress)
-      : [];
+    const parsedshippingAddress = shippingAddress ? JSON.parse(shippingAddress) : [];
     if (parsedshippingAddress.length === 0) {
       console.log("Add shipping Address");
       alert("Add shipping Address");
@@ -30,11 +31,18 @@ export default function ProceedToPay() {
       const uniqueID = Date.now();
       const order = {key:"q"+
         parsedCartItems[0].quantity + "no."+
-        parsedshippingAddress[0].contact+"id"+uniqueID}
-        ;
+        parsedshippingAddress[0].contact+"id"+uniqueID};
+        const pric = parsedCartItems[0].quantity * parsedCartItems[0].price
+        console.log(pric)
+        const neworderidprice = {
+          id: "q"+
+            parsedCartItems[0].quantity + "no."+parsedshippingAddress[0].contact+"id"+uniqueID,
+          price: pric,
+        };
+        setorderIDPrice([neworderidprice]);
       
       // const data = { key: 'value', otherParam: 123 };  // Example data to pass
-  navigate('/run', { state: { key: order.key} });
+   navigate('/run', { state: { key: order.key} });
     // navigate("/run",  order );
     }
   }

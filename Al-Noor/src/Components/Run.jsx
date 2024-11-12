@@ -76,7 +76,7 @@ function Run() {
       <input id="Key2" name="Key2" type="hidden" value="9621725557413686" />
       <h2>Step 1/4</h2>
       <p>When you pay online through our website, your payment is securely processed via Alfalah Bank's gateway. This ensures your transaction is safe, encrypted, and verified directly with the bank. Your first step is Handshake</p>
-      <h1>Data Passed: {key}</h1>
+      <div style={{height:"20px"}}></div>
       <form
         action="https://sandbox.bankalfalah.com/HS/HS/HS"
         id="HandshakeForm"
@@ -134,13 +134,13 @@ function Run() {
         <input
           id="HS_TransactionReferenceNumber"
           name="HS_TransactionReferenceNumber"
-          type="text"
+          type="hidden"
           autoComplete="off"
           placeholder="Order ID"
           value={key.toString()}
           
         />
-        <button
+        <button style={{width:"minimum"}}
           type="submit"
           className="btn btn-custon-four btn-danger"
           id="handshake"
