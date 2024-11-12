@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import CryptoJS from 'crypto-js';
 import { useLocation } from 'react-router-dom';
 
+
 function Payment_Method() {
   const [HS_RequestHash, setHS_RequestHash] = useState("");
   const [authToken, setAuthToken] = useState('');
@@ -9,7 +10,7 @@ function Payment_Method() {
   const [transactionType, setTransactionType] = useState("");
   const [transactionReferenceNumber, setTransactionReferenceNumber] = useState("a");
   const location = useLocation();
-  const { auth } = location.state || {};
+  const { key } = location.state || {};
   const orderIDPrice = localStorage.getItem("online_order_payment");
   const parsedorderIDPrice = orderIDPrice ? JSON.parse(orderIDPrice) : [];
 
@@ -67,14 +68,19 @@ function Payment_Method() {
     console.log(document.getElementById("AuthToken").value)
     
   };
+  
 
   return (
+    
     <div className="review-form-container">
 
 <h2>Step 3/4</h2>
       <p>Now you are ready to go on Bank Alflah Payment Gateway Portal.</p>
       <div style={{height:"20px"}}></div>
-      {authToken ? <p>Auth Token: {auth}</p> : <p>No Auth Token found</p>}
+      {/* {authToken ? <p>Auth Token: {auth}</p> : <p>No Auth Token found</p>} */}
+      {/* <h1>Received Params: auth = {key}</h1> */}
+      {/* <h1>Received Params: Key = {key}</h1> */}
+      {/* <h1>Received Params: Key = {key}</h1> */}
       
       <input id="Key1" name="Key1" type="hidden" value="cx29ScERgFbyD56R" />
       <input id="Key2" name="Key2" type="hidden" value="9621725557413686" />
@@ -85,11 +91,12 @@ function Payment_Method() {
         id="PageRedirectionForm"
         method="post"
       >
-        <input id="AuthToken" name="AuthToken" type="text" value={auth} onChange={(e) => {
+        <input id="AuthToken" name="AuthToken" type="text" value={key} />
+        {/* onChange={(e) => {
             setAuthToken(e.target.value);
             console.log(e.target.value);
             document.getElementById("AuthToken").value = e.target.value;
-          }}/>
+          }} */}
         <input
           id="RequestHash"
           name="RequestHash"
